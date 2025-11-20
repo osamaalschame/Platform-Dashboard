@@ -1,0 +1,2563 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="pageTitle">منصة SROI الذكية - حساب العائد الاجتماعي على الاستثمار بالذكاء الاصطناعي</title>
+    <!-- Icons & Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+         <!-- <script src="static/security.js"></script> -->
+    <style>
+        :root {
+            --primary: #0a3d62;
+            --secondary: #1e5f74;
+            --accent: #2ecc71;
+            --gold: #f39c12;
+            --light: #ecf0f1;
+            --white: #ffffff;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --border: #bdc3c7;
+            --shadow: 0 10px 40px rgba(0,0,0,0.08);
+            --shadow-hover: 0 15px 50px rgba(0,0,0,0.15);
+            --blue: #3b82f6;
+            --blue-dark: #1e40af;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+        [dir="rtl"] * {
+            font-family: 'Cairo', 'Poppins', sans-serif;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            line-height: 1.8;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background: #f5f7fa;
+            direction: rtl;
+           -webkit-user-select: none; /* Chrome, Safari, Opera */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE/Edge */
+             user-select: none; /* Standard */
+        }
+        /* ==================== HEADER ==================== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            white-space: nowrap;
+        }
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+          nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+       
+        [dir="ltr"] nav a {
+            margin-right: 1rem;
+            margin-left: 0;
+            text-align: left;
+        }
+       
+        [dir="rtl"] nav a {
+            margin-left: 1rem;
+            margin-right: 0;
+            text-align: right;
+        }
+       
+       
+     
+       
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+          white-space: nowrap;
+            display: inline-block;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
+        .header-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        .lang-toggle {
+            background: var(--light);
+            border: 1px solid var(--border);
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.85rem;
+            min-width: 80px;
+            text-align: center;
+        }
+        .lang-toggle:hover {
+            background: var(--primary);
+            color: white;
+        }
+        .btn-login {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 0.7rem 1.4rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .btn-login:hover {
+            background: var(--primary);
+            color: white;
+        }
+        .btn-signup {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(10, 61, 98, 0.3);
+            font-size: 0.9rem;
+        }
+        .btn-signup:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(10, 61, 98, 0.4);
+        }
+        /* ==================== SIDEBAR ==================== */
+        .sidebar {
+            position: fixed;
+            top: 80px;
+            bottom: 24px;
+            width: 210px;
+            background: #ffffff;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.06);
+            padding: 18px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 900;
+            border-radius: 18px 0 0 18px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        html[dir="rtl"] .sidebar {
+            right: 0;
+            left: auto;
+            border-radius: 8px 0 0 18px;
+            margin-top: 34px;
+        }
+        html[dir="ltr"] .sidebar {
+            left: 0;
+            right: auto;
+            border-radius: 0 18px 18px 0;
+        }
+        .sidebar.sidebar-collapsed {
+            opacity: 0;
+        }
+        html[dir="rtl"] .sidebar.sidebar-collapsed {
+            transform: translateX(110%);
+        }
+        html[dir="ltr"] .sidebar.sidebar-collapsed {
+            transform: translateX(-110%);
+        }
+        .sidebar h4 {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 4px;
+            padding-inline-start: 4px;
+        }
+        .sidebar a {
+            padding: 8px 10px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .sidebar a i {
+            font-size: 0.9rem;
+            color: var(--accent);
+        }
+        .sidebar a:hover {
+            background: var(--light);
+            color: var(--primary);
+            transform: translateY(-1px);
+        }
+        .sidebar-toggle-btn {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 26px;
+            height: 70px;
+            border-radius: 999px 0 0 999px;
+            background: #ffffff;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            border: none;
+            cursor: pointer;
+            z-index: 950;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        html[dir="rtl"] .sidebar-toggle-btn {
+            right: 0;
+            left: auto;
+            border-radius: 999px 0 0 999px;
+        }
+        html[dir="ltr"] .sidebar-toggle-btn {
+            left: 0;
+            right: auto;
+            border-radius: 0 999px 999px 0;
+        }
+        .sidebar-toggle-btn i {
+            color: var(--primary);
+            font-size: 1rem;
+        }
+        .sidebar-toggle-btn:hover {
+            background: var(--primary);
+        }
+        .sidebar-toggle-btn:hover i {
+            color: #ffffff;
+        }
+        @media (max-width: 1024px) {
+            .sidebar {
+                display: none;
+            }
+            .sidebar-toggle-btn {
+                display: none;
+            }
+        }
+        /* ==================== HERO ==================== */
+        .hero {
+            margin-top: 80px;
+            padding: 120px 5% 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0a3d62 0%, #1e5f74 50%, #2ecc71 100%);
+            color: white;
+        }
+        .hero::before,
+        .hero::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+        }
+        .hero::before {
+            top: -40%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            animation: float 6s ease-in-out infinite;
+        }
+        .hero::after {
+            bottom: -30%;
+            right: -5%;
+            width: 500px;
+            height: 500px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(18px); }
+        }
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1.2rem;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            opacity: 0.97;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1.6rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary, .btn-secondary {
+            border-radius: 30px;
+            padding: 0.9rem 2.4rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        .btn-primary {
+            background: #ffffff;
+            color: var(--primary);
+            border: none;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.22);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+        .btn-secondary:hover {
+            background: #ffffff;
+            color: var(--primary);
+        }
+        /* ==================== MAIN LAYOUT ==================== */
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-inline: 5%;
+        }
+        @media (min-width: 1025px) {
+            html[dir="rtl"] main {
+                margin-right: 230px;
+            }
+            html[dir="ltr"] main {
+                margin-left: 230px;
+            }
+            html[dir="rtl"] .hero {
+                padding-right: calc(5% + 210px);
+                padding-left: 5%;
+            }
+            html[dir="ltr"] .hero {
+                padding-left: calc(5% + 210px);
+                padding-right: 5%;
+            }
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-header h2 {
+            font-size: 2.3rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-weight: 900;
+        }
+        .section-header p {
+            font-size: 1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        /* STATS */
+        .stats-section {
+            margin: 80px 0;
+            padding: 40px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 1.6rem;
+            border-right: 3px solid var(--accent);
+        }
+        .stat-card:last-child {
+            border-right: none;
+        }
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        /* SROI SECTION */
+        .sroi-explanation {
+            margin: 100px 0;
+            padding: 70px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #ecf0f1 100%);
+            border-radius: 25px;
+        }
+        .sroi-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 3rem;
+            align-items: flex-start;
+        }
+        .sroi-text h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+            font-weight: 900;
+        }
+        .sroi-text p {
+            font-size: 0.98rem;
+            color: var(--text-light);
+            margin-bottom: 1.3rem;
+        }
+        .sroi-points {
+            list-style: none;
+        }
+        .sroi-points li {
+            display: flex;
+            gap: 0.7rem;
+            margin-bottom: 0.9rem;
+            font-size: 0.92rem;
+            align-items: flex-start;
+        }
+        .sroi-points li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 900;
+            font-size: 1.2rem;
+        }
+        .sroi-visual {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            font-size: 0.9rem;
+        }
+        .sroi-formula {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .sroi-example {
+            background: var(--light);
+            padding: 18px;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+        }
+        /* BENEFITS */
+        .benefits-section {
+            margin: 90px 0;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+        }
+        .benefit-box {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--accent);
+            text-align: center;
+        }
+        .benefit-box:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        .benefit-icon {
+            font-size: 2.3rem;
+            margin-bottom: 1rem;
+        }
+        .benefit-box h3 {
+            font-size: 1.15rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+        }
+        .benefit-box p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        .benefit-subtext {
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            background: var(--light);
+            padding: 0.6rem;
+            border-radius: 8px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        /* FEATURES */
+        .features-section {
+            margin: 90px 0;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+        }
+        .feature-box {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--accent);
+            text-align: center;
+        }
+        .feature-box:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        .feature-icon {
+            font-size: 2.3rem;
+            margin-bottom: 1rem;
+        }
+        .feature-box h3 {
+            font-size: 1.15rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+        }
+        .feature-box p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        /* HOW IT WORKS */
+        .how-works {
+            margin: 90px 0;
+        }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.8rem;
+            margin-top: 40px;
+        }
+        .step-card {
+            background: #ffffff;
+            padding: 28px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        .step-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+        .step-number {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: 800;
+        }
+        .step-card h4 {
+            font-size: 1.05rem;
+            color: var(--primary);
+            margin-bottom: 0.4rem;
+            font-weight: 800;
+        }
+        .step-card p {
+            font-size: 0.88rem;
+            color: var(--text-light);
+        }
+        /* SOLUTIONS */
+        .solutions-section {
+            margin: 90px 0;
+            padding: 60px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #ecf0f1 100%);
+            border-radius: 25px;
+        }
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1.8rem;
+            margin-top: 30px;
+        }
+        .solution-card {
+            background: #ffffff;
+            padding: 24px;
+            border-radius: 15px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+            text-align: center;
+        }
+        .solution-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 26px rgba(0,0,0,0.1);
+        }
+        .solution-icon {
+            font-size: 2.2rem;
+            margin-bottom: 0.6rem;
+        }
+        .solution-card h4 {
+            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 0.2rem;
+            font-weight: 800;
+        }
+        .solution-card p {
+            font-size: 0.86rem;
+            color: var(--text-light);
+        }
+        /* PARTNERS */
+        .partners-section {
+            margin: 90px 0;
+        }
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 2rem;
+            margin-top: 40px;
+            align-items: center;
+            justify-items: center;
+        }
+        .partner-card {
+            background: #ffffff;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 3px 14px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .partner-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 9px 24px rgba(0,0,0,0.14);
+        }
+        .partner-logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .partner-logo img {
+            max-width: 110px;
+            max-height: 70px;
+            object-fit: contain;
+        }
+        .partner-name {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+        /* PRICING */
+        .pricing-section {
+            margin: 90px 0;
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 2rem;
+            margin-top: 40px;
+        }
+        .pricing-card {
+            background: #ffffff;
+            padding: 32px;
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--accent);
+        }
+        .pricing-card.featured {
+            transform: scale(1.03);
+            border-top-color: var(--gold);
+            box-shadow: 0 14px 40px rgba(243, 156, 18, 0.18);
+        }
+        .pricing-label {
+            display: inline-block;
+            padding: 0.3rem 0.9rem;
+            border-radius: 16px;
+            background: var(--accent);
+            color: #ffffff;
+            font-size: 0.75rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        .pricing-card.featured .pricing-label {
+            background: var(--gold);
+        }
+        .pricing-card h3 {
+            font-size: 1.35rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 0.2rem;
+        }
+        .pricing-card > p {
+            font-size: 0.88rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+        .price {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 0.2rem;
+        }
+        .price-period {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            margin-bottom: 1.1rem;
+        }
+        .features-list {
+            list-style: none;
+            margin: 0.6rem 0 0.4rem;
+        }
+        .features-list li {
+            padding: 0.45rem 0;
+            border-bottom: 1px solid #ecf0f1;
+            font-size: 0.84rem;
+            color: var(--text-light);
+            display: flex;
+            gap: 0.4rem;
+            justify-content: flex-end;
+        }
+        .features-list li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 900;
+        }
+        .pricing-card button {
+            width: 100%;
+            padding: 0.9rem;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 700;
+            background: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.16);
+            margin-top: 1.2rem;
+        }
+        .pricing-card button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 18px rgba(0,0,0,0.22);
+        }
+        .pricing-card.featured button {
+            background: var(--gold);
+            color: #2c3e50;
+        }
+        /* CONTACT */
+        .contact-section {
+            margin: 90px 0 40px;
+            padding: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 22px;
+            text-align: center;
+            color: #ffffff;
+        }
+        .contact-methods {
+            margin-top: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.4rem;
+            justify-content: center;
+        }
+        .contact-item p:first-child {
+            font-weight: 600;
+        }
+        /* FOOTER */
+        footer {
+            background: var(--primary);
+            padding: 50px 5% 20px;
+            color: #ffffff;
+            margin-top: 40px;
+        }
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 2rem;
+        }
+        .footer-section h4 {
+            font-size: 1rem;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+        }
+        .footer-section a {
+            display: block;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.78);
+            text-decoration: none;
+            margin-bottom: 0.4rem;
+        }
+        .footer-section a:hover {
+            color: #ffffff;
+            transform: translateX(-4px);
+        }
+        .footer-bottom {
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.7);
+            border-top: 1px solid rgba(255,255,255,0.18);
+            padding-top: 10px;
+        }
+        /* ==================== LOGIN MODAL ==================== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+        .modal {
+            background: #ffffff;
+            border-radius: 18px;
+            max-width: 420px;
+            width: 90%;
+            padding: 28px 26px 22px;
+            box-shadow: 0 18px 55px rgba(0,0,0,0.25);
+            animation: fadeInScale 0.3s ease-out;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .modal-header h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .modal-close {
+            border: none;
+            background: transparent;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+        .modal p {
+            font-size: 0.86rem;
+            color: var(--text-light);
+            margin-bottom: 14px;
+        }
+        .modal label {
+            font-size: 0.8rem;
+            color: var(--text-dark);
+            display: block;
+            margin-bottom: 4px;
+        }
+        .modal input[type="email"],
+        .modal input[type="password"],
+        .modal input[type="text"] {
+            width: 100%;
+            padding: 9px 10px;
+            border-radius: 10px;
+            border: 1px solid #dcdfe4;
+            font-size: 0.82rem;
+            margin-bottom: 10px;
+            outline: none;
+        }
+        .modal input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(10,61,98,0.08);
+        }
+        .modal .modal-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0 4px;
+        }
+        .modal .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+        .modal .forgot-link {
+            font-size: 0.75rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        .modal button.submit-btn {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #ffffff;
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .modal button.submit-btn:hover {
+            box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+            transform: translateY(-2px);
+        }
+        .modal button.submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        /* ==================== CHATBOT (MODERN) ==================== */
+        #chatbotToggle {
+            position: fixed;
+            bottom: 1.5rem;
+            z-index: 2100;
+            width: 64px;
+            height: 64px;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(59,130,246,0.45);
+        }
+        #chatbotToggle i {
+            font-size: 1.7rem;
+        }
+        #chatbotToggle:hover {
+            transform: scale(1.07) translateY(-3px);
+            box-shadow: 0 10px 28px rgba(59,130,246,0.6);
+        }
+        #chatbotToggle.active {
+            animation: pulse-glow 2s infinite;
+        }
+        .online-indicator {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 14px;
+            height: 14px;
+            background: #22c55e;
+            border-radius: 999px;
+            border: 2px solid #ffffff;
+            animation: blink 2s infinite;
+        }
+        html[dir="rtl"] #chatbotToggle {
+            right: auto;
+            left: 1.5rem;
+        }
+        html[dir="ltr"] #chatbotToggle {
+            left: auto;
+            right: 1.5rem;
+        }
+        #chatbot {
+            position: fixed;
+            bottom: 6.4rem;
+            z-index: 2200;
+            width: 380px;
+            max-width: calc(100% - 40px);
+            height: 500px;
+            background: #ffffff;
+            border-radius: 22px;
+            box-shadow: 0 18px 48px rgba(15,23,42,0.35);
+            border: 1px solid #e5e7eb;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            transform: translateY(20px) scale(0.95);
+            opacity: 0;
+        }
+        html[dir="rtl"] #chatbot {
+            right: auto;
+            left: 1.5rem;
+        }
+        html[dir="ltr"] #chatbot {
+            left: auto;
+            right: 1.5rem;
+        }
+        .chatbot-header {
+            position: relative;
+            padding: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+            color: #ffffff;
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+        }
+        .chatbot-header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at top right, rgba(255,255,255,0.18), transparent),
+                radial-gradient(circle at bottom left, rgba(255,255,255,0.08), transparent);
+            opacity: 0.23;
+            pointer-events: none;
+        }
+        .chatbot-header-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            z-index: 1;
+        }
+        .chatbot-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.16);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.32);
+        }
+        .chatbot-header-title h3 {
+            font-size: 0.98rem;
+            font-weight: 700;
+        }
+        .chatbot-header-title p {
+            font-size: 0.7rem;
+            color: #dbeafe;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .chatbot-header-right {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            position: relative;
+            z-index: 1;
+        }
+        .chatbot-header-right button {
+            border-radius: 999px;
+            border: none;
+            background: transparent;
+            color: #eff6ff;
+            padding: 5px;
+            cursor: pointer;
+        }
+        .chatbot-header-right button:hover {
+            background: rgba(255,255,255,0.12);
+            color: #ffffff;
+        }
+        #chatbotMessages {
+            flex: 1;
+            padding: 10px 12px 6px;
+            overflow-y: auto;
+            background: linear-gradient(to bottom, #f9fafb, #ffffff);
+            scroll-behavior: smooth;
+        }
+        .message {
+            max-width: 85%;
+            padding: 8px 11px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            line-height: 1.6;
+            margin-bottom: 6px;
+            animation: slideIn 0.25s ease-out;
+        }
+        .message.user {
+            margin-inline-start: auto;
+            background: var(--blue);
+            color: #ffffff;
+            border-bottom-right-radius: 4px;
+        }
+        .message.assistant {
+            background: #eef2ff;
+            color: #111827;
+            border-bottom-left-radius: 4px;
+        }
+        .typing-indicator {
+            display: inline-flex;
+            gap: 3px;
+            padding: 6px 9px;
+            border-radius: 10px;
+            background: #e5e7eb;
+            margin-bottom: 6px;
+        }
+        .typing-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 999px;
+            background: #6b7280;
+            animation: blink 1s infinite;
+        }
+        .typing-dot:nth-child(2) { animation-delay: 0.15s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.3s; }
+        #chatbotQuickActions {
+            padding: 6px 10px 4px;
+            border-top: 1px solid #e5e7eb;
+            background: #ffffff;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .quick-action-btn {
+            padding: 5px 9px;
+            border-radius: 999px;
+            border: 1px solid #e5e7eb;
+            background: #f9fafb;
+            font-size: 0.7rem;
+            cursor: pointer;
+        }
+        .quick-action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(15,23,42,0.12);
+            background: #eff6ff;
+            border-color: #bfdbfe;
+        }
+        .chatbot-input-wrap {
+            padding: 8px 10px 10px;
+            border-top: 1px solid #e5e7eb;
+            background: #ffffff;
+        }
+        .chatbot-input-inner {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+        #chatbotInput {
+            flex: 1;
+            padding: 9px 12px;
+            border-radius: 999px;
+            border: 1px solid #e5e7eb;
+            font-size: 0.78rem;
+            background: #f9fafb;
+            outline: none;
+        }
+        #chatbotInput:focus {
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+            border-color: #60a5fa;
+        }
+        #chatbotSendBtn {
+            width: 34px;
+            height: 34px;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px rgba(37,99,235,0.35);
+        }
+        #chatbotSendBtn:hover {
+            transform: translateY(-1px) scale(1.03);
+            box-shadow: 0 6px 18px rgba(37,99,235,0.45);
+        }
+        /* Animations */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes pulse-glow {
+            0%,100% { box-shadow: 0 0 14px rgba(59,130,246,0.5); }
+            50% { box-shadow: 0 0 22px rgba(59,130,246,0.85); }
+        }
+        @keyframes blink {
+            0%,100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        #chatbotMessages::-webkit-scrollbar {
+            width: 6px;
+        }
+        #chatbotMessages::-webkit-scrollbar-track {
+            background: #f9fafb;
+        }
+        #chatbotMessages::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        #chatbotMessages::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        /* RESPONSIVE CHATBOT */
+        @media (max-width: 768px) {
+            #chatbot {
+                width: calc(100% - 32px);
+                height: 65vh;
+            }
+        }
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .hero { padding: 100px 5% 70px; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 0.98rem; }
+            .stats-section { padding: 26px; }
+            .sroi-explanation,
+            .solutions-section,
+            .contact-section { padding: 34px; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.7rem; }
+        }
+        /* Toast Notification Styles */
+        .toast-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            z-index: 3000;
+            min-width: 300px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+        }
+        .toast-notification.show {
+            transform: translateX(0);
+        }
+        .toast-success {
+            background: #10b981;
+        }
+        .toast-error {
+            background: #ef4444;
+        }
+    </style>
+</head>
+<body>
+    <!-- ==================== SIDEBAR & TOGGLE ==================== -->
+    <aside class="sidebar" id="sidebar">
+        <h4 data-i18n="sidebarTitle">تصفّح المنصة</h4>
+        <a href="#sroi-info"><i class="fa-solid fa-circle-info"></i><span data-i18n="navWhatIs">ما هو SROI؟</span></a>
+        <a href="#benefits"><i class="fa-solid fa-check-circle"></i><span data-i18n="navBenefits">الفوائد</span></a>
+        <a href="#features"><i class="fa-solid fa-layer-group"></i><span data-i18n="navFeatures">المميزات</span></a>
+        <a href="#how-works"><i class="fa-solid fa-route"></i><span data-i18n="navHowWorks">كيفية العمل</span></a>
+        <a href="#pricing"><i class="fa-solid fa-tags"></i><span data-i18n="navPricing">الأسعار</span></a>
+        <a href="#contact"><i class="fa-solid fa-headset"></i><span data-i18n="sidebarSupport">الدعم والتواصل</span></a>
+    </aside>
+    <button class="sidebar-toggle-btn" id="sidebarToggle" title="Toggle navigation">
+        <i class="fa-solid fa-angles-left" id="sidebarToggleIcon"></i>
+    </button>
+    <!-- ==================== HEADER ==================== -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">📊</div>
+                <span data-i18n="logoTitle">منصة SROI الذكية</span>
+            </div>
+            <nav>
+                <a href="#sroi-info" data-i18n="navWhatIs">ما هو SROI؟</a>
+                <a href="#benefits" data-i18n="navBenefits">الفوائد</a>
+                <a href="#features" data-i18n="navFeatures">المميزات</a>
+                <a href="#how-works" data-i18n="navHowWorks">كيفية العمل</a>
+                <a href="#pricing" data-i18n="navPricing">الأسعار</a>
+            </nav>
+            <div class="header-buttons">
+                <button class="lang-toggle" id="lang-btn" onclick="toggleLanguage()">EN</button>
+                <button class="btn-login" id="login-btn" data-i18n="loginBtn" onclick="openLoginModal()">دخول</button>
+                <!-- <button class="btn-login" id="register-btn" data-i18n="registerBtn" onclick="openRegisterModal()">تسجيل</button> -->
+
+                <button class="btn-signup" id="signup-btn" data-i18n="signupBtn">ابدأ الآن</button>
+            </div>
+        </div>
+    </header>
+    <!-- ==================== HERO ==================== -->
+    <section class="hero">
+        <div class="hero-content">
+           <h1 data-i18n="heroTitle">
+    نُمكِّن مؤسساتكم من قياس العائد الاجتماعي على الاستثمار باستخدام تقنية الذكاء الاصطناعي
+</h1>
+            <p data-i18n="heroSubtitle">منصة SROI الذكية توفر لك تحليلاً آلياً شاملاً ودقيقاً لقياس الأثر الاجتماعي والمالي في دقائق، باللغة العربية والإنجليزية.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" data-i18n="heroPrimaryCta" onclick="openRegisterModal()">جرّب المنصة مجاناً لمدة 14 يومًا</button>
+                <button class="btn-secondary" data-i18n="heroSecondaryCta" onclick="showVideo()">شاهد الفيديو التعريفي</button>
+            </div>
+        </div>
+    </section>
+    <!-- ==================== MAIN ==================== -->
+    <main>
+        <!-- STATS -->
+        <section class="stats-section">
+            <div class="stat-card">
+                <div class="stat-number">10K+</div>
+                <div class="stat-label" data-i18n="stat1">جهات تستخدم المنصة بثقة</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">500M+</div>
+                <div class="stat-label" data-i18n="stat2">ريال تمت دراسته كقيمة اجتماعية</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">95%</div>
+                <div class="stat-label" data-i18n="stat3">معدل رضا عن جودة التقارير</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label" data-i18n="stat4">دعم فني عربي وإنجليزي</div>
+            </div>
+        </section>
+        <!-- SROI EXPLANATION -->
+        <section class="sroi-explanation" id="sroi-info">
+            <div class="section-header">
+                <h2 data-i18n="sroiSectionTitle">ما هو SROI؟</h2>
+                <p data-i18n="sroiSectionSubtitle">منهجية عالمية لقياس القيمة الاجتماعية والاقتصادية لاستثماراتك وبرامجك.</p>
+            </div>
+            <div class="sroi-grid">
+                <div class="sroi-text">
+                    <h3 data-i18n="sroiWhyTitle">لماذا يعتبر قياس SROI ضروريًا؟</h3>
+                    <p data-i18n="sroiWhyText">
+                        يساعدك SROI على تحويل الأثر الاجتماعي إلى قيمة رقمية واضحة، مما يعزز ثقة أصحاب المصلحة، ويوجه القرارات الاستثمارية، ويُظهر التزامك بالحوكمة والمسؤولية المجتمعية.
+                    </p>
+                    <ul class="sroi-points">
+                        <li data-i18n="sroiPoint1"><strong>قياس الأثر الحقيقي:</strong> توثيق الفوائد الاجتماعية والاقتصادية الفعلية.</li>
+                        <li data-i18n="sroiPoint2"><strong>دعم القرار:</strong> توجيه الموارد نحو البرامج الأعلى تأثيرًا.</li>
+                        <li data-i18n="sroiPoint3"><strong>تعزيز الثقة:</strong> تقارير كمية للجهات المانحة والمستثمرين.</li>
+                        <li data-i18n="sroiPoint4"><strong>مواءمة المعايير الدولية:</strong> وفق أفضل الممارسات العالمية.</li>
+                        <li data-i18n="sroiPoint5"><strong>تحسين الإدارة:</strong> مؤشرات قابلة للقياس لتطوير البرامج.</li>
+                    </ul>
+                </div>
+                <div class="sroi-visual">
+                    <div class="sroi-formula">
+                        <h4 data-i18n="sroiFormulaTitle">معادلة SROI المختصرة</h4>
+                        <p data-i18n="sroiFormula">SROI = القيمة الاجتماعية الصافية ÷ إجمالي الاستثمار</p>
+                    </div>
+                    <div class="sroi-example" data-i18n="sroiExample">
+                        <strong>مثال:</strong><br><br>
+                        استثمار 100,000 ر.س في برنامج تدريب مهني للشباب:
+                        <ul style="list-style:none; margin-top:0.6rem;">
+                            <li>✓ فرص عمل تقديرية: 500,000 ر.س</li>
+                            <li>✓ رفع المهارات: 200,000 ر.س</li>
+                            <li>✓ خفض تكاليف البطالة: 150,000 ر.س</li>
+                        </ul>
+                        <p style="margin-top:0.6rem;"><strong>إجمالي الأثر: 850,000 ر.س → SROI = 8.5</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- BENEFITS -->
+        <section class="benefits-section" id="benefits">
+            <div class="section-header">
+                <h2 data-i18n="benefitsTitle">فوائد المنصة</h2>
+                <p data-i18n="benefitsSubtitle">حل احترافي مؤتمت يخدم الفرق العربية والعالمية.</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-box">
+                    <div class="benefit-icon">⏱️</div>
+                    <h3 data-i18n="benefit1Title">تسريع العمل</h3>
+                    <p data-i18n="benefit1Text">تحويل دراسات الأثر من 40 ساعة عمل إلى أقل من 10 دقائق.</p>
+                    <div class="benefit-subtext" data-i18n="benefit1Sub">معالجة فورية لبيانات البرامج والمخرجات.</div>
+                </div>
+                
+                <div class="benefit-box">
+                    <div class="benefit-icon">🎯</div>
+                    <h3 data-i18n="benefit3Title">موثوقية عالية</h3>
+                    <p data-i18n="benefit3Text">منهجيات واضحة وحسابات قابلة للتدقيق الداخلي والخارجي.</p>
+                    <div class="benefit-subtext" data-i18n="benefit3Sub">مخرجات تتوافق مع توقعات الجهات الرقابية والمانحين.</div>
+                </div>
+                <div class="benefit-box">
+                    <div class="benefit-icon">🤖</div>
+                    <h3 data-i18n="benefit4Title">مستشار ذكي</h3>
+                    <p data-i18n="benefit4Text">اقتراح مؤشرات وProxies مالية تلقائيًا حسب نوع البرنامج.</p>
+                    <div class="benefit-subtext" data-i18n="benefit4Sub">Financial Proxies Analyzer مدمج.</div>
+                </div>
+                <div class="benefit-box">
+                    <div class="benefit-icon">📊</div>
+                    <h3 data-i18n="benefit5Title">تقارير احترافية</h3>
+                    <p data-i18n="benefit5Text">توليد تقارير PDF وExcel وWord بالعربية والإنجليزية.</p>
+                    <div class="benefit-subtext" data-i18n="benefit5Sub">جاهزة للعرض على اللجان ومجالس الإدارات.</div>
+                </div>
+                <div class="benefit-box">
+                    <div class="benefit-icon">🔍</div>
+                    <h3 data-i18n="benefit6Title">متابعة الأثر</h3>
+                    <p data-i18n="benefit6Text">متابعة دورة حياة الاستثمار من المدخلات حتى النتائج النهائية.</p>
+                    <div class="benefit-subtext" data-i18n="benefit6Sub">لوحات معلومات حية ومؤشرات أداء.</div>
+                </div>
+            </div>
+        </section>
+        <!-- FEATURES -->
+        <section class="features-section" id="features">
+            <div class="section-header">
+                <h2 data-i18n="featuresTitle">مميزات المنصة</h2>
+                <p data-i18n="featuresSubtitle">منصة ثنائية اللغة، آمنة، ومدعومة بالذكاء الاصطناعي.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon">🤖</div>
+                    <h3 data-i18n="feature1Title">تحليل AI متقدم</h3>
+                    <p data-i18n="feature1Text">خوارزميات تربط الأنشطة بالنتائج وتقترح قيم الأثر تلقائياً.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">💹</div>
+                    <h3 data-i18n="feature2Title">Proxies مالية دقيقة</h3>
+                    <p data-i18n="feature2Text">أتمتة حسابات deadweight, attribution, drop-off وغيرها.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">📈</div>
+                    <h3 data-i18n="feature3Title">لوحات تفاعلية</h3>
+                    <p data-i18n="feature3Text">عرض الأثر حسب القطاع، المنطقة، أو الفئة المستفيدة.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">📄</div>
+                    <h3 data-i18n="feature4Title">تصدير مرن</h3>
+                    <p data-i18n="feature4Text">تقارير رسمية بالعربية والإنجليزية بضغطة زر.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">🔍</div>
+                    <h3 data-i18n="feature5Title">أرشفة وتتبع</h3>
+                    <p data-i18n="feature5Text">تاريخ كامل لكل تحليل SROI وسيناريوهاته.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">🔒</div>
+                    <h3 data-i18n="feature6Title">أمان وامتثال</h3>
+                    <p data-i18n="feature6Text">تشفير متقدم وصلاحيات متعددة وامتثال لمعايير حماية البيانات.</p>
+                </div>
+            </div>
+        </section>
+        <!-- HOW IT WORKS -->
+        <section class="how-works" id="how-works">
+            <div class="section-header">
+                <h2 data-i18n="howTitle">كيفية عمل المنصة</h2>
+                <p data-i18n="howSubtitle">أربع خطوات بسيطة لإصدار تقرير SROI موثوق.</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h4 data-i18n="howStep1Title">تعريف المشروع</h4>
+                    <p data-i18n="howStep1Text">إدخال بيانات البرنامج، الأهداف، الميزانية، والفئات المستفيدة.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h4 data-i18n="howStep2Title">ربط الأنشطة بالنتائج</h4>
+                    <p data-i18n="howStep2Text">تحديد المؤشرات، المخرجات، وطرق القياس.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h4 data-i18n="howStep3Title">تحليل آلي بالذكاء الاصطناعي</h4>
+                    <p data-i18n="howStep3Text">اقتراح Proxies وحساب القيمة الاجتماعية فورياً.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h4 data-i18n="howStep4Title">إصدار التقارير</h4>
+                    <p data-i18n="howStep4Text">تصدير تقرير جاهز للمجالس والجهات المانحة.</p>
+                </div>
+            </div>
+        </section>
+        <!-- SOLUTIONS -->
+        <section class="solutions-section">
+            <div class="section-header">
+                <h2 data-i18n="solutionsTitle">حلول مخصصة لكل قطاع</h2>
+                <p data-i18n="solutionsSubtitle">منصة واحدة تلبي احتياجات الشركات، الحكومات، والمنظمات غير الربحية.</p>
+            </div>
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <div class="solution-icon">🏢</div>
+                    <h4 data-i18n="sol1Title">الشركات الكبرى</h4>
+                    <p data-i18n="sol1Text">قياس أثر برامج ESG والمسؤولية الاجتماعية بدقة وشفافية.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">🏛️</div>
+                    <h4 data-i18n="sol2Title">الجهات الحكومية</h4>
+                    <p data-i18n="sol2Text">تقييم البرامج الوطنية والمبادرات التنموية بناءً على الأثر.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">❤️</div>
+                    <h4 data-i18n="sol3Title">الجمعيات الخيرية</h4>
+                    <p data-i18n="sol3Text">إثبات أثر التبرعات وتعزيز ثقة المتبرعين.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">🤝</div>
+                    <h4 data-i18n="sol4Title">المنظمات غير الربحية</h4>
+                    <p data-i18n="sol4Text">إدارة ومتابعة الأثر المجتمعي عبر مشاريع متعددة.</p>
+                </div>
+            </div>
+        </section>
+        <!-- PARTNERS -->
+        <section class="partners-section">
+            <div class="section-header">
+                <h2 data-i18n="partnersTitle">شركاؤنا</h2>
+                <p data-i18n="partnersSubtitle">نتعاون مع بيوت خبرة ومؤسسات دولية لتعزيز موثوقية النتائج.</p>
+            </div>
+            <div class="partners-grid">
+                <div class="partner-card">
+                    <div class="partner-logo-container">
+                        <div class="partner-logo">
+                            <img src="https://via.placeholder.com/120x80/0a3d62/ffffff?text=Partner 1" alt="Partner 1">
+                        </div>
+                        <p class="partner-name">Partner 1</p>
+                    </div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-logo-container">
+                        <div class="partner-logo">
+                            <img src="https://via.placeholder.com/120x80/1e90ff/ffffff?text=Partner 2" alt="Partner 2">
+                        </div>
+                        <p class="partner-name">Partner 2</p>
+                    </div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-logo-container">
+                        <div class="partner-logo">
+                            <img src="https://via.placeholder.com/120x80/ff6b35/ffffff?text=Partner 3" alt="Partner 3">
+                        </div>
+                        <p class="partner-name">Partner 3</p>
+                    </div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-logo-container">
+                        <div class="partner-logo">
+                            <img src="https://via.placeholder.com/120x80/2ecc71/ffffff?text=Partner 4" alt="Partner 4">
+                        </div>
+                        <p class="partner-name">Partner 4</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- PRICING -->
+        <section class="pricing-section" id="pricing">
+            <div class="section-header">
+                <h2 data-i18n="pricingTitle">باقات الاشتراك</h2>
+                <p data-i18n="pricingSubtitle">خطط مرنة مع دعم كامل بالعربية والإنجليزية.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <span class="pricing-label" data-i18n="basicLabel">للمشاريع الصغيرة</span>
+                    <h3 data-i18n="basicTitle">الباقة الأساسية</h3>
+                    <p data-i18n="basicDesc">مثالية للمنظمات التي تبدأ رحلتها في قياس الأثر.</p>
+                    <div class="price" data-i18n="basicPrice"><span class="price-currency"> </span> </div>
+                    <div class="price-period" data-i18n="basicPeriod">رسوم لمرة واحدة</div>
+                    <ul class="features-list">
+                        <li data-i18n="basicF1">5 تحليلات SROI كاملة.</li>
+                        <li data-i18n="basicF2">لوحة معلومات أساسية.</li>
+                        <li data-i18n="basicF3">دعم عبر البريد الإلكتروني.</li>
+                        <li data-i18n="basicF4">تقارير PDF بالعربية أو الإنجليزية.</li>
+                        <li data-i18n="basicF5">تخزين حتى 5 GB.</li>
+                    </ul>
+                    <button onclick="selectPlan('basic')" data-i18n="basicCta">اختر هذه الباقة</button>
+                </div>
+                <div class="pricing-card featured">
+                    <span class="pricing-label" data-i18n="proLabel">الأكثر اختيارًا ⭐</span>
+                    <h3 data-i18n="proTitle">الباقة الاحترافية</h3>
+                    <p data-i18n="proDesc">للجهات النشطة التي تدير عدة برامج ومبادرات.</p>
+                    <div class="price" data-i18n="proPrice">
+                        <span class="price-currency"> </span>
+                        <span style="font-size: 1.1rem;"> رسوم شهريا</span>
+                    </div>
+                    <div class="price-period" data-i18n="proPeriod">رسوم سنويا </div>
+                    <ul class="features-list">
+                        <li data-i18n="proF1">تحليلات SROI غير محدودة.</li>
+                        <li data-i18n="proF2">تقارير Excel وWord مخصصة.</li>
+                        <li data-i18n="proF3">محرك AI متقدم لاقتراح المؤشرات.</li>
+                        <li data-i18n="proF4">دعم فني 24/7 بالعربية والإنجليزية.</li>
+                        <li data-i18n="proF5">تتبع الاستثمارات ولوحات تفاعلية.</li>
+                        <li data-i18n="proF6">سعة تخزين 100 GB.</li>
+                        <li data-i18n="proF7">صلاحيات متعددة وتعاون فرق العمل.</li>
+                    </ul>
+                    <button onclick="selectPlan('pro')" data-i18n="proCta">ابدأ التجربة المجانية 14 يومًا</button>
+                </div>
+                <div class="pricing-card">
+                    <span class="pricing-label" data-i18n="entLabel">للقطاعات الكبرى</span>
+                    <h3 data-i18n="entTitle">الباقة المؤسسية</h3>
+                    <p data-i18n="entDesc">للحكومات، الصناديق، والشركات متعددة البرامج.</p>
+                    <div class="price" data-i18n="entPrice">
+                        <span class="price-currency"> </span>
+                        <span style="font-size: 1.1rem;">/ سنويًا</span>
+                    </div>
+                    <div class="price-period" data-i18n="entPeriod">مع إمكانية تخصيص كاملة للوظائف والتكاملات.</div>
+                    <ul class="features-list">
+                        <li data-i18n="entF1">جميع الميزات دون حدود.</li>
+                        <li data-i18n="entF2">نماذج AI متقدمة وتحليلات عميقة.</li>
+                        <li data-i18n="entF3">دعم مخصص 24/7.</li>
+                        <li data-i18n="entF4">تكامل API مع أنظمة المؤسسة.</li>
+                        <li data-i18n="entF5">تخزين وآمان على مستوى المؤسسات.</li>
+                        <li data-i18n="entF6">مدير حساب وخبير أثر مخصص.</li>
+                        <li data-i18n="entF7">نسخ احتياطي يومي وضوابط حوكمة.</li>
+                    </ul>
+                    <button onclick="selectPlan('enterprise')" data-i18n="entCta">تواصل مع فريق المبيعات</button>
+                </div>
+            </div>
+        </section>
+        <!-- CONTACT -->
+        <section class="contact-section" id="contact">
+            <h2 data-i18n="contactTitle">هل لديك استفسار؟</h2>
+            <p data-i18n="contactSubtitle">فريقنا جاهز لدعمك وتقديم جلسة تعريفية مجانية.</p>
+            <div class="contact-methods">
+                <div class="contact-item">
+                    <p data-i18n="contactEmailLabel">📧 البريد الإلكتروني</p>
+                    <p>info@sroi-smart.com</p>
+                </div>
+                <div class="contact-item">
+                    <p data-i18n="contactPhoneLabel">📱 الهاتف</p>
+                    <p>+966 55 123 4567</p>
+                </div>
+                <div class="contact-item">
+                    <p data-i18n="contactLocationLabel">🏢 الموقع</p>
+                    <p data-i18n="contactLocationValue">الرياض، المملكة العربية السعودية</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- ==================== CHATBOT TOGGLE ==================== -->
+    <button id="chatbotToggle" onclick="toggleChatbot()" title="Open Chat">
+        <i class="fas fa-robot"></i>
+        <span class="online-indicator"></span>
+    </button>
+    <!-- ==================== CHATBOT CONTAINER ==================== -->
+    <div id="chatbot">
+        <div class="chatbot-header">
+            <div class="chatbot-header-left">
+                <div class="chatbot-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="chatbot-header-title">
+                    <h3 id="chatbotTitle" data-i18n="chatbotTitleMain">🤖 مساعد SROI الذكي</h3>
+                    <p id="chatbotStatus">
+                        <span class="online-indicator" style="position:static; width:7px; height:7px; border:none; margin:0;"></span>
+                        <span data-i18n="chatbotStatusOnline">متصل الآن • جاهز للمساعدة</span>
+                    </p>
+                </div>
+            </div>
+            <div class="chatbot-header-right">
+                <button onclick="clearChatbotHistory()" title="Clear Chat">
+                    <i class="fas fa-eraser"></i>
+                </button>
+                <button onclick="toggleChatbot()" title="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div id="chatbotMessages"></div>
+        <div id="chatbotQuickActions"></div>
+        <div class="chatbot-input-wrap">
+            <div class="chatbot-input-inner">
+                <input
+                    type="text"
+                    id="chatbotInput"
+                    placeholder="اكتب رسالتك هنا..."
+                    data-i18n-placeholder-ar="اكتب رسالتك هنا..."
+                    data-i18n-placeholder-en="Type your message here..."
+                    onkeypress="handleChatbotInputKeypress(event)"
+                    autocomplete="off"
+                >
+                <button id="chatbotSendBtn" onclick="sendChatbotMessage()" title="Send">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- ==================== LOGIN MODAL ==================== -->
+    <div class="modal-overlay" id="login-modal">
+        <div class="modal">
+            <form id="loginFormModal" onsubmit="submitLogin(event)">
+                <div class="modal-header">
+                    <h3 data-i18n="loginTitle">تسجيل الدخول إلى منصة SROI</h3>
+                    <button type="button" class="modal-close" onclick="closeLoginModal()">&times;</button>
+                </div>
+                <p data-i18n="loginSubtitle">أدخل بيانات حسابك للوصول إلى لوحة المعلومات والتقارير.</p>
+                <label for="login-email" data-i18n="loginEmailLabel">البريد الإلكتروني المؤسسي</label>
+                <input type="email" id="login-email" placeholder="name@organization.com" required>
+                <label for="login-password" data-i18n="loginPasswordLabel">كلمة المرور</label>
+                <input type="password" id="login-password" placeholder="********" required>
+                <div class="modal-actions">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember-me">
+                        <label for="remember-me" data-i18n="loginRemember">تذكرني</label>
+                    </div>
+                    <div class="forgot-link" data-i18n="loginForgot">نسيت كلمة المرور؟</div>
+                </div>
+                <button type="submit" class="submit-btn" id="submit-login-btn" data-i18n="loginSubmit">دخول الآن</button>
+            </form>
+        </div>
+    </div>
+    <!-- register modal  -->
+    <div class="modal-overlay" id="register-modal">
+        <div class="modal">
+            <form id="registerFormModal" onsubmit="submitRegister(event)">
+                <div class="modal-header">
+                    <h3 data-i18n="registerTitle">إنشاء حساب جديد على منصة SROI</h3>
+                    <button type="button" class="modal-close" onclick="closeRegisterModal()">&times;</button>
+                </div>
+                <p data-i18n="registerSubtitle">املأ النموذج أدناه للبدء في قياس الأثر الاجتماعي لمؤسستك.</p>
+                <label for="register-name" data-i18n="registerNameLabel">الاسم الكامل</label>
+                <input type="text" id="register-name" placeholder="أدخل اسمك الكامل" required>
+                <label for="register-email" data-i18n="registerEmailLabel">البريد الإلكتروني المؤسسي</label>
+                <input type="email" id="register-email" placeholder="name@organization.com" required>
+                <label for="register-password" data-i18n="registerPasswordLabel">كلمة المرور</label>
+                <input type="password" id="register-password" placeholder="********" required>
+                <label for="register-confirm-password" data-i18n="registerConfirmPasswordLabel">تأكيد كلمة المرور</label>
+                <input type="password" id="register-confirm-password" placeholder="********" required>
+                <button type="submit" class="submit-btn" id="submit-register-btn" data-i18n="registerSubmit">إنشاء الحساب</button>
+            </form>
+        </div>
+    </div>
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 data-i18n="footerPlatform">المنصة</h4>
+                <a href="#sroi-info" data-i18n="footerWhatIs">ما هو SROI</a>
+                <a href="#benefits" data-i18n="footerBenefits">الفوائد</a>
+                <a href="#features" data-i18n="footerFeatures">المميزات</a>
+                <a href="#how-works" data-i18n="footerHow">كيفية العمل</a>
+                <a href="#pricing" data-i18n="footerPricing">الأسعار</a>
+            </div>
+            <div class="footer-section">
+                <h4 data-i18n="footerCompany">الشركة</h4>
+                <a href="#" data-i18n="footerAbout">من نحن</a>
+                <a href="#" data-i18n="footerBlog">المدونة</a>
+                <a href="#" data-i18n="footerCareers">الوظائف</a>
+                <a href="#" data-i18n="footerNews">الأخبار</a>
+                <a href="#" data-i18n="footerPartners">شركاؤنا</a>
+            </div>
+            <div class="footer-section">
+                <h4 data-i18n="footerSupport">الدعم</h4>
+                <a href="#" data-i18n="footerHelpCenter">مركز المساعدة</a>
+                <a href="#" data-i18n="footerDocs">الوثائق</a>
+                <a href="#" data-i18n="footerTraining">التدريب</a>
+                <a href="#contact" data-i18n="footerContact">اتصل بنا</a>
+                <a href="#" data-i18n="footerFeedback">ملاحظاتكم</a>
+            </div>
+            <div class="footer-section">
+                <h4 data-i18n="footerLegal">قانوني</h4>
+                <a href="#" data-i18n="footerTerms">الشروط والأحكام</a>
+                <a href="#" data-i18n="footerPrivacy">سياسة الخصوصية</a>
+                <a href="#" data-i18n="footerCookies">سياسة ملفات تعريف الارتباط</a>
+                <a href="#" data-i18n="footerCompliance">الامتثال والتنظيم</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footerCopy">© 2025 منصة SROI الذكية. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+    <script>
+        // ==================== TRANSLATIONS (ESSENTIAL KEYS) ====================
+        const translations = {
+            ar: {
+                pageTitle: "منصة SROI الذكية - حساب العائد الاجتماعي على الاستثمار بالذكاء الاصطناعي",
+                logoTitle: "منصة SROI الذكية",
+                navWhatIs: "ما هو SROI؟",
+                navBenefits: "الفوائد",
+                navFeatures: "المميزات",
+                navHowWorks: "كيفية العمل",
+                navPricing: "الأسعار",
+                sidebarTitle: "تصفّح المنصة",
+                sidebarSupport: "الدعم والتواصل",
+                loginBtn: "دخول",
+                signupBtn: "ابدأ الآن",
+                heroTitle: "نُمكِّن مؤسساتكم من قياس العائد الاجتماعي على الاستثمار باستخدام تقنية الذكاء الاصطناعي",
+    heroSubtitle: "منصة SROI الذكية توفر لك تحليلاً آلياً شاملاً ودقيقاً لقياس الأثر الاجتماعي والمالي في دقائق، باللغة العربية والإنجليزية.",
+                heroPrimaryCta: "جرّب المنصة مجاناً لمدة 14 يومًا",
+                heroSecondaryCta: "شاهد الفيديو التعريفي",
+                stat1: "جهات تستخدم المنصة بثقة",
+                stat2: "ريال تمت دراسته كقيمة اجتماعية",
+                stat3: "معدل رضا عن جودة التقارير",
+                stat4: "دعم فني عربي وإنجليزي",
+                sroiSectionTitle: "ما هو SROI؟",
+                sroiSectionSubtitle: "منهجية عالمية لقياس القيمة الاجتماعية والاقتصادية لاستثماراتك وبرامجك.",
+                sroiWhyTitle: "لماذا يعتبر قياس SROI ضروريًا؟",
+                sroiWhyText: "يساعدك SROI على تحويل الأثر الاجتماعي إلى قيمة رقمية واضحة، مما يعزز ثقة أصحاب المصلحة، ويوجه القرارات الاستثمارية، ويُظهر التزامك بالحوكمة والمسؤولية المجتمعية.",
+                sroiPoint1: "<strong>قياس الأثر الحقيقي:</strong> توثيق الفوائد الاجتماعية والاقتصادية الفعلية.",
+                sroiPoint2: "<strong>دعم القرار:</strong> توجيه الموارد نحو البرامج الأعلى تأثيرًا.",
+                sroiPoint3: "<strong>تعزيز الثقة:</strong> تقارير كمية للجهات المانحة والمستثمرين.",
+                sroiPoint4: "<strong>مواءمة المعايير الدولية:</strong> وفق أفضل الممارسات العالمية.",
+                sroiPoint5: "<strong>تحسين الإدارة:</strong> مؤشرات قابلة للقياس لتطوير البرامج.",
+                sroiFormulaTitle: "معادلة SROI المختصرة",
+                sroiFormula: "SROI = القيمة الاجتماعية الصافية ÷ إجمالي الاستثمار",
+                sroiExample: "<strong>مثال:</strong><br><br>استثمار 100,000 ر.س في برنامج تدريب مهني للشباب:<ul style=\"list-style:none; margin-top:0.6rem;\"><li>✓ فرص عمل تقديرية: 500,000 ر.س</li><li>✓ رفع المهارات: 200,000 ر.س</li><li>✓ خفض تكاليف البطالة: 150,000 ر.س</li></ul><p style=\"margin-top:0.6rem;\"><strong>إجمالي الأثر: 850,000 ر.س → SROI = 8.5</strong></p>",
+                benefitsTitle: "فوائد المنصة",
+                benefitsSubtitle: "حل احترافي مؤتمت يخدم الفرق العربية والعالمية.",
+                benefit1Title: "تسريع العمل",
+                benefit1Text: "تحويل دراسات الأثر من 40 ساعة عمل إلى أقل من 10 دقائق.",
+                benefit1Sub: "معالجة فورية لبيانات البرامج والمخرجات.",
+                benefit3Title: "موثوقية عالية",
+                benefit3Text: "منهجيات واضحة وحسابات قابلة للتدقيق الداخلي والخارجي.",
+                benefit3Sub: "مخرجات تتوافق مع توقعات الجهات الرقابية والمانحين.",
+                benefit4Title: "مستشار ذكي",
+                benefit4Text: "اقتراح مؤشرات وProxies مالية تلقائيًا حسب نوع البرنامج.",
+                benefit4Sub: "Financial Proxies Analyzer مدمج.",
+                benefit5Title: "تقارير احترافية",
+                benefit5Text: "توليد تقارير PDF وExcel وWord بالعربية والإنجليزية.",
+                benefit5Sub: "جاهزة للعرض على اللجان ومجالس الإدارات.",
+                benefit6Title: "متابعة الأثر",
+                benefit6Text: "متابعة دورة حياة الاستثمار من المدخلات حتى النتائج النهائية.",
+                benefit6Sub: "لوحات معلومات حية ومؤشرات أداء.",
+                featuresTitle: "مميزات المنصة",
+                featuresSubtitle: "منصة ثنائية اللغة، آمنة، ومدعومة بالذكاء الاصطناعي.",
+                feature1Title: "تحليل AI متقدم",
+                feature1Text: "خوارزميات تربط الأنشطة بالنتائج وتقترح قيم الأثر تلقائياً.",
+                feature2Title: "Proxies مالية دقيقة",
+                feature2Text: "أتمتة حسابات deadweight, attribution, drop-off وغيرها.",
+                feature3Title: "لوحات تفاعلية",
+                feature3Text: "عرض الأثر حسب القطاع، المنطقة، أو الفئة المستفيدة.",
+                feature4Title: "تصدير مرن",
+                feature4Text: "تقارير رسمية بالعربية والإنجليزية بضغطة زر.",
+                feature5Title: "أرشفة وتتبع",
+                feature5Text: "تاريخ كامل لكل تحليل SROI وسيناريوهاته.",
+                feature6Title: "أمان وامتثال",
+                feature6Text: "تشفير متقدم وصلاحيات متعددة وامتثال لمعايير حماية البيانات.",
+                howTitle: "كيفية عمل المنصة",
+                howSubtitle: "أربع خطوات بسيطة لإصدار تقرير SROI موثوق.",
+                howStep1Title: "تعريف المشروع",
+                howStep1Text: "إدخال بيانات البرنامج، الأهداف، الميزانية، والفئات المستفيدة.",
+                howStep2Title: "ربط الأنشطة بالنتائج",
+                howStep2Text: "تحديد المؤشرات، المخرجات، وطرق القياس.",
+                howStep3Title: "تحليل آلي بالذكاء الاصطناعي",
+                howStep3Text: "اقتراح Proxies وحساب القيمة الاجتماعية فورياً.",
+                howStep4Title: "إصدار التقارير",
+                howStep4Text: "تصدير تقرير جاهز للمجالس والجهات المانحة.",
+                solutionsTitle: "حلول مخصصة لكل قطاع",
+                solutionsSubtitle: "منصة واحدة تلبي احتياجات الشركات، الحكومات، والمنظمات غير الربحية.",
+                sol1Title: "الشركات الكبرى",
+                sol1Text: "قياس أثر برامج ESG والمسؤولية الاجتماعية بدقة وشفافية.",
+                sol2Title: "الجهات الحكومية",
+                sol2Text: "تقييم البرامج الوطنية والمبادرات التنموية بناءً على الأثر.",
+                sol3Title: "الجمعيات الخيرية",
+                sol3Text: "إثبات أثر التبرعات وتعزيز ثقة المتبرعين.",
+                sol4Title: "المنظمات غير الربحية",
+                sol4Text: "إدارة ومتابعة الأثر المجتمعي عبر مشاريع متعددة.",
+                partnersTitle: "شركاؤنا",
+                partnersSubtitle: "نتعاون مع بيوت خبرة ومؤسسات دولية لتعزيز موثوقية النتائج.",
+                pricingTitle: "باقات الاشتراك",
+                pricingSubtitle: "خطط مرنة مع دعم كامل بالعربية والإنجليزية.",
+                basicLabel: "للمشاريع الصغيرة",
+                basicTitle: "الباقة الأساسية",
+                basicDesc: "مثالية للمنظمات التي تبدأ رحلتها في قياس الأثر.",
+                basicPrice: "",
+                basicPeriod: "رسوم لمرة واحدة",
+                basicF1: "5 تحليلات SROI كاملة.",
+                basicF2: "لوحة معلومات أساسية.",
+                basicF3: "دعم عبر البريد الإلكتروني.",
+                basicF4: "تقارير PDF بالعربية أو الإنجليزية.",
+                basicF5: "تخزين حتى 5 GB.",
+                basicCta: "اختر هذه الباقة",
+                proLabel: "الأكثر اختيارًا ⭐",
+                proTitle: "الباقة الاحترافية",
+                proDesc: "للجهات النشطة التي تدير عدة برامج ومبادرات.",
+                proPrice: "",
+                proPeriod: "رسوم سنويا ",
+                proF1: "تحليلات SROI غير محدودة.",
+                proF2: "تقارير Excel وWord مخصصة.",
+                proF3: "محرك AI متقدم لاقتراح المؤشرات.",
+                proF4: "دعم فني 24/7 بالعربية والإنجليزية.",
+                proF5: "تتبع الاستثمارات ولوحات تفاعلية.",
+                proF6: "سعة تخزين 100 GB.",
+                proF7: "صلاحيات متعددة وتعاون فرق العمل.",
+                proCta: "ابدأ التجربة المجانية 14 يومًا",
+                entLabel: "للقطاعات الكبرى",
+                entTitle: "الباقة المؤسسية",
+                entDesc: "للحكومات، الصناديق، والشركات متعددة البرامج.",
+                entPrice: "",
+                entPeriod: "مع إمكانية تخصيص كاملة للوظائف والتكاملات.",
+                entF1: "جميع الميزات دون حدود.",
+                entF2: "نماذج AI متقدمة وتحليلات عميقة.",
+                entF3: "دعم مخصص 24/7.",
+                entF4: "تكامل API مع أنظمة المؤسسة.",
+                entF5: "تخزين وآمان على مستوى المؤسسات.",
+                entF6: "مدير حساب وخبير أثر مخصص.",
+                entF7: "نسخ احتياطي يومي وضوابط حوكمة.",
+                entCta: "تواصل مع فريق المبيعات",
+                contactTitle: "هل لديك استفسار؟",
+                contactSubtitle: "فريقنا جاهز لدعمك وتقديم جلسة تعريفية مجانية.",
+                contactEmailLabel: "📧 البريد الإلكتروني",
+                contactPhoneLabel: "📱 الهاتف",
+                contactLocationLabel: "🏢 الموقع",
+                contactLocationValue: "الرياض، المملكة العربية السعودية",
+                loginTitle: "تسجيل الدخول إلى منصة SROI",
+                loginSubtitle: "أدخل بيانات حسابك للوصول إلى لوحة المعلومات والتقارير.",
+                loginEmailLabel: "البريد الإلكتروني المؤسسي",
+                loginPasswordLabel: "كلمة المرور",
+                loginRemember: "تذكرني",
+                loginForgot: "نسيت كلمة المرور؟",
+                loginSubmit: "دخول الآن",
+                chatbotTitleMain: "🤖 مساعد SROI الذكي",
+                chatbotStatusOnline: "متصل الآن • جاهز للمساعدة",
+                chatbotWelcome: "مرحبًا 👋 أنا مساعد SROI الذكي. اسألني عن SROI، الباقات، أو كيفية تطبيق المنصة في مؤسستك.",
+                footerPlatform: "المنصة",
+                footerCompany: "الشركة",
+                footerSupport: "الدعم",
+                footerLegal: "قانوني",
+                footerWhatIs: "ما هو SROI",
+                footerBenefits: "الفوائد",
+                footerFeatures: "المميزات",
+                footerHow: "كيفية العمل",
+                footerPricing: "الأسعار",
+                footerAbout: "من نحن",
+                footerBlog: "المدونة",
+                footerCareers: "الوظائف",
+                footerNews: "الأخبار",
+                footerPartners: "شركاؤنا",
+                footerHelpCenter: "مركز المساعدة",
+                footerDocs: "الوثائق",
+                footerTraining: "التدريب",
+                footerContact: "اتصل بنا",
+                footerFeedback: "ملاحظاتكم",
+                footerTerms: "الشروط والأحكام",
+                footerPrivacy: "سياسة الخصوصية",
+                footerCookies: "سياسة ملفات تعريف الارتباط",
+                footerCompliance: "الامتثال والتنظيم",
+                footerCopy: "© 2025 منصة SROI الذكية. جميع الحقوق محفوظة.",
+                loginSuccess: "تم تسجيل الدخول بنجاح! جاري التوجيه إلى لوحة التحكم...",
+                loginError: "خطأ في تسجيل الدخول. تحقق من البيانات.",
+                invalidCredentials: "بيانات الدخول غير صحيحة. جرب: admin@sroi.com / admin123"
+            },
+            en: {
+                pageTitle: "SROI Smart Platform - AI-Powered Social Return on Investment",
+                logoTitle: "SROI Smart Platform",
+                navWhatIs: "What is SROI?",
+                navBenefits: "Benefits",
+                navFeatures: "Features",
+                navHowWorks: "How it Works",
+                navPricing: "Pricing",
+                sidebarTitle: "Navigate",
+                sidebarSupport: "Support & Contact",
+                loginBtn: "Login",
+                signupBtn: "Get Started",
+                 heroTitle: "Empowering Organizations to Measure Social Return on Investment Using AI Technology",
+    heroSubtitle: "The SROI Smart Platform provides advanced solutions to analyze and evaluate the social and economic impact of your investments efficiently and effectively.",
+            
+                heroPrimaryCta: "Start your 14-day free trial",
+                heroSecondaryCta: "Watch intro video",
+                stat1: "Trusted organizations",
+                stat2: "SAR assessed as social value",
+                stat3: "Customer satisfaction rate",
+                stat4: "24/7 bilingual support",
+                sroiSectionTitle: "What is SROI?",
+                sroiSectionSubtitle: "A global framework to quantify the social and economic value of your programs.",
+                sroiWhyTitle: "Why SROI Matters",
+                sroiWhyText: "SROI helps convert social impact into clear numerical value, building stakeholder trust, guiding investment decisions, and demonstrating governance and CSR commitment.",
+                sroiPoint1: "<strong>Measure Real Impact:</strong> Document actual social and economic benefits.",
+                sroiPoint2: "<strong>Decision Support:</strong> Direct resources to higher-impact programs.",
+                sroiPoint3: "<strong>Build Trust:</strong> Quantitative reports for donors and investors.",
+                sroiPoint4: "<strong>Align with Global Standards:</strong> Following best international practices.",
+                sroiPoint5: "<strong>Improve Management:</strong> Measurable indicators for program development.",
+                sroiFormulaTitle: "SROI Formula (Simplified)",
+                sroiFormula: "SROI = Net Social Value ÷ Total Investment",
+                sroiExample: "<strong>Example:</strong><br><br>Invest SAR 100,000 in youth vocational training program:<ul style=\"list-style:none; margin-top:0.6rem;\"><li>✓ Estimated job opportunities: SAR 500,000</li><li>✓ Skill enhancement: SAR 200,000</li><li>✓ Unemployment cost reduction: SAR 150,000</li></ul><p style=\"margin-top:0.6rem;\"><strong>Total Impact: SAR 850,000 → SROI = 8.5</strong></p>",
+                benefitsTitle: "Platform Benefits",
+                benefitsSubtitle: "An enterprise-grade automated solution for impact teams.",
+                benefit1Title: "Accelerate Work",
+                benefit1Text: "Transform impact studies from 40 hours to under 10 minutes.",
+                benefit1Sub: "Instant processing of program and outcome data.",
+                benefit3Title: "High Reliability",
+                benefit3Text: "Clear methodologies and auditable calculations.",
+                benefit3Sub: "Outputs aligned with regulatory and donor expectations.",
+                benefit4Title: "Smart Advisor",
+                benefit4Text: "Auto-suggest indicators and financial proxies by program type.",
+                benefit4Sub: "Built-in Financial Proxies Analyzer.",
+                benefit5Title: "Professional Reports",
+                benefit5Text: "Generate PDF, Excel, and Word reports in Arabic and English.",
+                benefit5Sub: "Ready for board and committee presentations.",
+                benefit6Title: "Impact Tracking",
+                benefit6Text: "Track investment lifecycle from inputs to final outcomes.",
+                benefit6Sub: "Live dashboards and performance indicators.",
+                featuresTitle: "Key Features",
+                featuresSubtitle: "Bilingual, secure, AI-powered by design.",
+                feature1Title: "Advanced AI Analysis",
+                feature1Text: "Algorithms linking activities to outcomes and suggesting impact values.",
+                feature2Title: "Precise Financial Proxies",
+                feature2Text: "Automated deadweight, attribution, drop-off calculations.",
+                feature3Title: "Interactive Dashboards",
+                feature3Text: "View impact by sector, region, or beneficiary group.",
+                feature4Title: "Flexible Export",
+                feature4Text: "Official reports in Arabic and English with one click.",
+                feature5Title: "Archiving & Tracking",
+                feature5Text: "Full history of SROI analyses and scenarios.",
+                feature6Title: "Security & Compliance",
+                feature6Text: "Advanced encryption, multi-permissions, data protection standards.",
+                howTitle: "How It Works",
+                howSubtitle: "Four simple steps to a credible SROI report.",
+                howStep1Title: "Define Project",
+                howStep1Text: "Enter program data, goals, budget, and beneficiary categories.",
+                howStep2Title: "Link Activities to Outcomes",
+                howStep2Text: "Define indicators, outputs, and measurement methods.",
+                howStep3Title: "AI-Powered Automated Analysis",
+                howStep3Text: "Suggest proxies and calculate social value instantly.",
+                howStep4Title: "Issue Reports",
+                howStep4Text: "Export ready report for boards and donors.",
+                solutionsTitle: "Tailored Solutions",
+                solutionsSubtitle: "Built for corporates, governments, and nonprofits.",
+                sol1Title: "Large Corporates",
+                sol1Text: "Measure ESG and CSR program impact with precision and transparency.",
+                sol2Title: "Government Entities",
+                sol2Text: "Evaluate national programs and development initiatives by impact.",
+                sol3Title: "Charities",
+                sol3Text: "Prove donation impact and build donor trust.",
+                sol4Title: "Nonprofits",
+                sol4Text: "Manage and track community impact across multiple projects.",
+                partnersTitle: "Our Partners",
+                partnersSubtitle: "Working with leading advisory and assurance firms.",
+                pricingTitle: "Pricing Plans",
+                pricingSubtitle: "Flexible options with full Arabic & English support.",
+                basicLabel: "For Small Projects",
+                basicTitle: "Basic Package",
+                basicDesc: "Ideal for organizations starting their impact measurement journey.",
+                basicPrice: "",
+                basicPeriod: "One-time fees",
+                basicF1: "5 full SROI analyses.",
+                basicF2: "Basic dashboard.",
+                basicF3: "Email support.",
+                basicF4: "PDF reports in Arabic or English.",
+                basicF5: "Up to 5 GB storage.",
+                basicCta: "Select this package",
+                proLabel: "Most Popular ⭐",
+                proTitle: "Professional Package",
+                proDesc: "For active entities managing multiple programs and initiatives.",
+                proPrice: "",
+                proPeriod: "Annual fees ",
+                proF1: "Unlimited SROI analyses.",
+                proF2: "Custom Excel and Word reports.",
+                proF3: "Advanced AI engine for indicator suggestions.",
+                proF4: "24/7 technical support in Arabic and English.",
+                proF5: "Investment tracking and interactive dashboards.",
+                proF6: "100 GB storage capacity.",
+                proF7: "Multi-permissions and team collaboration.",
+                proCta: "Start 14-day free trial",
+                entLabel: "For Large Sectors",
+                entTitle: "Enterprise Package",
+                entDesc: "For governments, funds, and multi-program companies.",
+                entPrice: "",
+                entPeriod: "With full customization for functions and integrations.",
+                entF1: "All features unlimited.",
+                entF2: "Advanced AI models and deep analytics.",
+                entF3: "Dedicated 24/7 support.",
+                entF4: "API integration with enterprise systems.",
+                entF5: "Enterprise-level storage and security.",
+                entF6: "Account manager and dedicated impact expert.",
+                entF7: "Daily backups and governance controls.",
+                entCta: "Contact sales team",
+                contactTitle: "Have Questions?",
+                contactSubtitle: "Our team is ready to support you with a free demo session.",
+                contactEmailLabel: "📧 Email",
+                contactPhoneLabel: "📱 Phone",
+                contactLocationLabel: "🏢 Location",
+                contactLocationValue: "Riyadh, Kingdom of Saudi Arabia",
+                loginTitle: "Sign in to SROI Smart",
+                loginSubtitle: "Enter your credentials to access dashboards and reports.",
+                loginEmailLabel: "Corporate email",
+                loginPasswordLabel: "Password",
+                loginRemember: "Remember me",
+                loginForgot: "Forgot password?",
+                loginSubmit: "Sign in",
+                chatbotTitleMain: "SROI Smart Assistant",
+                chatbotStatusOnline: "Online • Ready to help",
+                chatbotWelcome: "Hello 👋 I'm the SROI Smart Assistant. Ask me about SROI, pricing, or onboarding.",
+                footerPlatform: "Platform",
+                footerCompany: "Company",
+                footerSupport: "Support",
+                footerLegal: "Legal",
+                footerWhatIs: "What is SROI",
+                footerBenefits: "Benefits",
+                footerFeatures: "Features",
+                footerHow: "How it Works",
+                footerPricing: "Pricing",
+                footerAbout: "About Us",
+                footerBlog: "Blog",
+                footerCareers: "Careers",
+                footerNews: "News",
+                footerPartners: "Partners",
+                footerHelpCenter: "Help Center",
+                footerDocs: "Docs",
+                footerTraining: "Training",
+                footerContact: "Contact Us",
+                footerFeedback: "Feedback",
+                footerTerms: "Terms & Conditions",
+                footerPrivacy: "Privacy Policy",
+                footerCookies: "Cookies Policy",
+                footerCompliance: "Compliance & Regulation",
+                footerCopy: "© 2025 SROI Smart Platform. All rights reserved.",
+                loginSuccess: "Login successful! Redirecting to dashboard...",
+                loginError: "Login error. Please check your credentials.",
+                invalidCredentials: "Invalid credentials. Try: admin@sroi.com / admin123"
+            }
+        };
+        let currentLang = 'ar';
+        function applyTranslations(lang) {
+            const dict = translations[lang] || {};
+            document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.body.dir = document.documentElement.dir;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key]) el.innerHTML = dict[key];
+            });
+            const chatbotInput = document.getElementById('chatbotInput');
+            if (chatbotInput) {
+                chatbotInput.placeholder = lang === 'ar'
+                    ? chatbotInput.getAttribute('data-i18n-placeholder-ar')
+                    : chatbotInput.getAttribute('data-i18n-placeholder-en');
+            }
+            document.title = dict.pageTitle || document.title;
+            // Update sidebar toggle icon direction
+            const icon = document.getElementById('sidebarToggleIcon');
+            if (icon) {
+                icon.className = '';
+                icon.classList.add('fa-solid', (lang === 'ar') ? 'fa-angles-left' : 'fa-angles-right');
+            }
+        }
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            applyTranslations(currentLang);
+            const btn = document.getElementById('lang-btn');
+            btn.textContent = currentLang === 'ar' ? 'EN' : 'عربي';
+            if (!document.querySelector('#chatbotMessages .message')) {
+                initChatbotMessages();
+            }
+        }
+        // ==================== SIDEBAR TOGGLE ====================
+        let sidebarVisible = true;
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebarToggleIcon = document.getElementById('sidebarToggleIcon');
+        function updateSidebarToggleIcon() {
+            if (document.documentElement.dir === 'rtl') {
+                sidebarToggleIcon.className = 'fa-solid ' + (sidebarVisible ? 'fa-angles-right' : 'fa-angles-left');
+            } else {
+                sidebarToggleIcon.className = 'fa-solid ' + (sidebarVisible ? 'fa-angles-left' : 'fa-angles-right');
+            }
+        }
+        function toggleSidebar() {
+            sidebarVisible = !sidebarVisible;
+            if (sidebarVisible) {
+                sidebar.classList.remove('sidebar-collapsed');
+            } else {
+                sidebar.classList.add('sidebar-collapsed');
+            }
+            updateSidebarToggleIcon();
+        }
+        sidebarToggle.addEventListener('click', toggleSidebar);
+        // ==================== BASIC UI ACTIONS ====================
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+        function showVideo() {
+            alert(currentLang === 'ar'
+                ? 'يمكن ربط هذا الزر لاحقًا بفيديو تعريفي بالمنصة.'
+                : 'You can later link this button to your platform intro video.');
+        }
+        // ==================== NOTIFICATION FUNCTION ====================
+        function showNotification(message, type = 'info', duration = 3000) {
+            const toast = document.createElement('div');
+            toast.className = `toast-notification toast-${type}`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            // Show with animation
+            setTimeout(() => toast.classList.add('show'), 100);
+            // Hide after duration
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => document.body.removeChild(toast), 300);
+            }, duration);
+        }
+        // ==================== LOGIN MODAL ====================
+        function openLoginModal() {
+            document.getElementById('login-modal').style.display = 'flex';
+        }
+        function closeLoginModal() {
+            document.getElementById('login-modal').style.display = 'none';
+            // Clear form on close
+            document.getElementById('login-email').value = '';
+            document.getElementById('login-password').value = '';
+        }
+        // ==================== REGISTER MODAL ====================
+        function openRegisterModal() {
+            document.getElementById('register-modal').style.display = 'flex';
+        }
+        function closeRegisterModal() {
+            document.getElementById('register-modal').style.display = 'none';
+            // Clear form on close
+            document.getElementById('register-name').value = '';
+            document.getElementById('register-email').value = '';
+            document.getElementById('register-password').value = '';
+            document.getElementById('register-confirm-password').value = '';
+        }
+        // ==================== INTEGRATED LOGIN LOGIC ====================
+       // Enhanced fallback (array of users for consistency)
+const fallbackUserSettings = [
+    {
+        "username": "admin",
+        "password": "admin123",
+        "email": "admin@sroi.genai4you.com",
+        "role": "administrator",
+        "enabled": true,
+        "settings": {
+            "apiProvider": "gemini",
+            "model": "gemini-2.0-flash-lite",
+            "apiKey": "",
+            "discountRate": "3.5",
+            "location": "السعودية - الرياض",
+            "currency": "SAR",
+            "language": "ar",
+            "predictionParams": {
+                "deadweightDefault": "0",
+                "attributionDefault": "0",
+                "dropoffDefault": "15",
+                "displacementDefault": "0",
+                "timeframe": "1",
+                "startofoutcomes": "1",
+                "predictionModel": "standard",
+                "enable": "1"
+            },
+            "uiSettings": {
+                "theme": "light",
+                "sidebarCollapsed": false,
+                "notifications": true
+            }
+        },
+        "createdAt": "2024-01-01T00:00:00.000Z",
+        "lastLogin": "2024-01-15T10:30:00.000Z"
+    }
+];
+
+async function loadUserSettingsFromJSON() {
+    try {
+        const response = await fetch('static/data/userSettings.json');
+        if (!response.ok) throw new Error(`HTTP ${response.status}: Failed to load user settings`);
+        let data = await response.json();
+        console.log('Users loaded from JSON:', data); // Debug log
+
+        // Normalize to array of user objects (handles { "admin": {...} } or [{...}] or single {...})
+        if (!Array.isArray(data)) {
+            if (typeof data === 'object' && data !== null) {
+                data = Object.values(data); // e.g., from {admin: {...}} to [{...}]
+            } else {
+                data = [data];
+            }
+        }
+        console.log('Normalized users array:', data); // Additional debug
+        return data;
+    } catch (error) {
+        console.warn('Failed to load userSettings.json, using fallback:', error);
+        return fallbackUserSettings;
+    }
+}
+
+// Helper: Find user by email or username (case-insensitive for username)
+function findUser(users, identifier) {
+    return users.find(user => 
+        (user.email && user.email.toLowerCase() === identifier.toLowerCase()) ||
+        (user.username && user.username.toLowerCase() === identifier.toLowerCase())
+    );
+}
+ 
+      
+        // Submit login - now handles form submit and Enter key
+    async function submitLogin(event) {
+    event.preventDefault();
+    const submitBtn = document.getElementById('submit-login-btn');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = currentLang === 'ar' ? 'جاري التحقق...' : 'Verifying...';
+
+    const inputValue = document.getElementById('login-email').value.trim().toLowerCase(); // Normalize
+    const password = document.getElementById('login-password').value;
+
+    if (!inputValue || !password) {
+        showNotification(currentLang === 'ar' ? translations.ar.invalidCredentials : translations.en.invalidCredentials, 'error');
+        resetSubmitBtn(submitBtn);
+        return;
+    }
+
+    try {
+        const userSettings = await loadUserSettingsFromJSON();
+        const user = findUser(userSettings, inputValue);
+
+        console.log('Login attempt for:', inputValue, 'Found user:', user ? 'Yes' : 'No'); // Debug log
+
+        if (user && user.password === password && (user.enabled === undefined || user.enabled !== false)) {
+            // Update lastLogin
+            if (user.lastLogin) user.lastLogin = new Date().toISOString();
+
+            const currentUserObj = {
+                username: user.username || user.email,
+                email: user.email,
+                role: user.role,
+                loginTime: new Date().toISOString(),
+                settings: user.settings
+            };
+            localStorage.setItem('currentUser', JSON.stringify(currentUserObj));
+
+            // Apply language from settings
+            if (user.settings && user.settings.language) {
+                currentLang = user.settings.language;
+                applyTranslations(currentLang);
+            }
+
+            closeLoginModal();
+            showNotification(currentLang === 'ar' ? translations.ar.loginSuccess : translations.en.loginSuccess, 'success');
+
+            // Redirect (adjust path as needed)
+            setTimeout(() => {
+                window.location.href = '/static/main.html';
+            }, 1500);
+        } else {
+            let errorMsg;
+            if (user) {
+                errorMsg = currentLang === 'ar' ? 'كلمة المرور غير صحيحة.' : 'Incorrect password.';
+            } else {
+                errorMsg = currentLang === 'ar' ? translations.ar.invalidCredentials : translations.en.invalidCredentials;
+            }
+            showNotification(errorMsg, 'error');
+        }
+    } catch (error) {
+        console.error('Login error:', error);
+        showNotification(currentLang === 'ar' ? translations.ar.loginError : translations.en.loginError, 'error');
+    } finally {
+        resetSubmitBtn(submitBtn);
+    }
+}
+
+function resetSubmitBtn(btn) {
+    btn.disabled = false;
+    btn.innerHTML = currentLang === 'ar' ? 'دخول الآن' : 'Sign in';
+}
+        // ==================== CHATBOT ====================
+        const chatbotEl = document.getElementById('chatbot');
+        const chatbotToggleBtn = document.getElementById('chatbotToggle');
+        const chatbotMessages = document.getElementById('chatbotMessages');
+        const chatbotQuickActions = document.getElementById('chatbotQuickActions');
+        function toggleChatbot() {
+            const isOpen = chatbotEl.style.display === 'flex';
+            if (isOpen) {
+                chatbotEl.style.opacity = '0';
+                chatbotEl.style.transform = 'translateY(20px) scale(0.95)';
+                chatbotToggleBtn.classList.remove('active');
+                setTimeout(() => { chatbotEl.style.display = 'none'; }, 180);
+            } else {
+                chatbotEl.style.display = 'flex';
+                setTimeout(() => {
+                    chatbotEl.style.opacity = '1';
+                    chatbotEl.style.transform = 'translateY(0) scale(1)';
+                }, 10);
+                chatbotToggleBtn.classList.add('active');
+                if (!chatbotMessages.hasChildNodes()) {
+                    initChatbotMessages();
+                }
+            }
+        }
+        function initChatbotMessages() {
+            chatbotMessages.innerHTML = '';
+            const welcome = (currentLang === 'ar')
+                ? translations.ar.chatbotWelcome
+                : translations.en.chatbotWelcome;
+            appendBotMessage(welcome);
+            renderQuickActions();
+        }
+        function appendMessage(text, sender = 'assistant') {
+            const div = document.createElement('div');
+            div.classList.add('message', sender === 'user' ? 'user' : 'assistant');
+            div.innerHTML = text;
+            chatbotMessages.appendChild(div);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+        function appendBotMessage(text) {
+            appendMessage(text, 'assistant');
+        }
+        function showTypingIndicator() {
+            const wrap = document.createElement('div');
+            wrap.classList.add('typing-indicator');
+            wrap.id = 'typing-indicator';
+            wrap.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+            chatbotMessages.appendChild(wrap);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+        function hideTypingIndicator() {
+            const el = document.getElementById('typing-indicator');
+            if (el) el.remove();
+        }
+        function clearChatbotHistory() {
+            chatbotMessages.innerHTML = '';
+            initChatbotMessages();
+        }
+        function renderQuickActions() {
+            chatbotQuickActions.innerHTML = '';
+            const actionsAr = [
+                'ما هي منهجية SROI؟',
+                'أي باقة تناسب جهتي؟',
+                'هل المنصة تدعم العربية والإنجليزية؟',
+                'كيف أبدأ التجربة المجانية؟'
+            ];
+            const actionsEn = [
+                'What is the SROI methodology?',
+                'Which plan fits our organization?',
+                'Is the platform bilingual?',
+                'How to start the free trial?'
+            ];
+            const list = currentLang === 'ar' ? actionsAr : actionsEn;
+            list.forEach(text => {
+                const btn = document.createElement('button');
+                btn.className = 'quick-action-btn';
+                btn.textContent = text;
+                btn.onclick = () => {
+                    appendMessage(text, 'user');
+                    handleBotResponse(text);
+                };
+                chatbotQuickActions.appendChild(btn);
+            });
+        }
+        function getBotResponse(message) {
+            const msg = message.toLowerCase();
+            if (currentLang === 'ar') {
+                if (msg.includes('sroi') || msg.includes('منهجية') || msg.includes('العائد الاجتماعي')) {
+                    return "SROI يقيس القيمة الاجتماعية والاقتصادية الناتجة عن كل ريال يتم استثماره. المنصة تساعدك في حسابه تلقائيًا وفق معايير واضحة وشفافة.";
+                }
+                if (msg.includes('باقة') || msg.includes('سعر') || msg.includes('تكلفة')) {
+                    return "لدينا الباقة الأساسية، والاحترافية، والمؤسسية. أخبرني بنوع جهتك (جمعية، شركة، جهة حكومية) وعدد مشاريعك لأقترح الأنسب.";
+                }
+                if (msg.includes('مجاني') || msg.includes('تجربة')) {
+                    return "يمكنك بدء تجربة مجانية لمدة 14 يومًا من الباقة الاحترافية مع دعم كامل أثناء فترة التجربة.";
+                }
+                if (msg.includes('لغة') || msg.includes('انجليزي') || msg.includes('إنجليزي')) {
+                    return "المنصة وتقاريرها تدعم العربية والإنجليزية بالكامل، مع إمكانية التبديل بسهولة.";
+                }
+                if (msg.includes('دعم') || msg.includes('تواصل') || msg.includes('help')) {
+                    return "فريق الدعم متاح 24/7 عبر البريد والهاتف، مع إمكانية حجز جلسة تعريفية لفريقك.";
+                }
+                return "شكرًا لسؤالك 🙌 يمكنك سؤالي عن منهجية SROI، اختيار الباقة المناسبة، خطوات الربط مع أنظمتكم، أو بدء التجربة المجانية.";
+            } else {
+                if (msg.includes('sroi') || msg.includes('social return')) {
+                    return "SROI compares the net social value created to the total investment. The platform automates calculations using transparent assumptions and recognized practices.";
+                }
+                if (msg.includes('plan') || msg.includes('price') || msg.includes('cost')) {
+                    return "We offer Basic, Professional, and Enterprise plans. Tell me your organization type and number of projects, and I'll suggest the best fit.";
+                }
+                if (msg.includes('trial') || msg.includes('free')) {
+                    return "You can start a 14-day free trial on the Professional plan with full bilingual support.";
+                }
+                if (msg.includes('bilingual') || msg.includes('language') || msg.includes('arabic')) {
+                    return "Yes, the interface and reports are fully available in both Arabic and English.";
+                }
+                if (msg.includes('support') || msg.includes('contact')) {
+                    return "Our team provides 24/7 bilingual support via email and phone, plus onboarding sessions.";
+                }
+                return "Thanks for your question 🙌 You can ask me about SROI, pricing, onboarding, or integrations.";
+            }
+        }
+        function handleBotResponse(userText) {
+            showTypingIndicator();
+            setTimeout(() => {
+                hideTypingIndicator();
+                const reply = getBotResponse(userText);
+                appendBotMessage(reply);
+            }, 400);
+        }
+        function sendChatbotMessage() {
+            const input = document.getElementById('chatbotInput');
+            const text = input.value.trim();
+            if (!text) return;
+            appendMessage(text, 'user');
+            input.value = '';
+            handleBotResponse(text);
+        }
+        function handleChatbotInputKeypress(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                sendChatbotMessage();
+            }
+        }
+        // ==================== PRICING PLANS ====================
+        function selectPlan(plan) {
+            alert(currentLang === 'ar' ? `تم اختيار الباقة: ${plan}` : `Selected plan: ${plan}`);
+            // Here you can integrate with payment or redirect to signup
+        }
+        // ==================== HEADER SCROLL & INIT ====================
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255,255,255,0.98)';
+                header.style.boxShadow = '0 5px 24px rgba(0,0,0,0.15)';
+            } else {
+                header.style.background = 'rgba(255,255,255,0.95)';
+                header.style.boxShadow = '0 2px 18px rgba(0,0,0,0.08)';
+            }
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            applyTranslations(currentLang);
+            initChatbotMessages();
+            updateSidebarToggleIcon();
+            const signupBtn = document.getElementById('signup-btn');
+            signupBtn.addEventListener('click', () => {
+                signupBtn.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    signupBtn.style.transform = 'scale(1)';
+                    scrollToSection('pricing');
+                }, 150);
+            });
+            // Wire login button click to function
+            const loginForm = document.getElementById('loginFormModal');
+              if (loginForm) {
+                  loginForm.addEventListener('submit', submitLogin); // Ensure it's wired
+              }
+              // Add Enter key support to password field
+              document.getElementById('login-password').addEventListener('keypress', (e) => {
+                  if (e.key === 'Enter') submitLogin(e);
+              });
+            // Reveal animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.08 });
+            document.querySelectorAll('.benefit-box, .feature-box, .step-card, .pricing-card, .solution-card')
+                .forEach(el => {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(24px)';
+                    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    observer.observe(el);
+                });
+        });
+    </script>
+</body>
+</html>
